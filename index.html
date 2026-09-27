@@ -1,1 +1,1266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Yerli Piyasa | Türkiye'nin Ticaret Ağı</title>
+
+  <meta name="description" content="Yerli Piyasa; üretici, besici, kasap, restoran, otel, mezbaha ve işletmeleri tek platformda buluşturan yeni nesil ticaret ağı.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f8fa;
+      color: #17202a;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8eaed;
+    }
+
+    .nav-container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .nav-links a:hover {
+      color: #111;
+    }
+
+    .nav-button {
+      background: #111;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255,190,70,.22), transparent 25%),
+        radial-gradient(circle at 10% 80%, rgba(0,0,0,.06), transparent 25%),
+        #ffffff;
+    }
+
+    .hero-container {
+      max-width: 1180px;
+      width: 100%;
+      margin: auto;
+      padding: 80px 22px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 30px;
+      background: #f1f2f4;
+      color: #444;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+      color: #111;
+    }
+
+    .hero h1 span {
+      color: #b87912;
+    }
+
+    .hero p {
+      max-width: 590px;
+      color: #626970;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-button {
+      background: #111;
+      color: white;
+      padding: 15px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-2px);
+      background: #222;
+    }
+
+    .secondary-button {
+      border: 1px solid #ddd;
+      background: white;
+      padding: 15px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    /* APP MOCKUP */
+
+    .phone-area {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone {
+      width: 300px;
+      height: 600px;
+      border: 9px solid #111;
+      border-radius: 42px;
+      background: #f5f6f7;
+      box-shadow: 0 30px 70px rgba(0,0,0,.18);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-top {
+      height: 58px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      font-weight: 800;
+    }
+
+    .phone-content {
+      padding: 16px;
+    }
+
+    .search {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #eee;
+    }
+
+    .category-row {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .category {
+      background: white;
+      border-radius: 11px;
+      padding: 10px 4px;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .listing {
+      background: #fff;
+      border-radius: 15px;
+      padding: 13px;
+      margin-bottom: 10px;
+      border: 1px solid #eee;
+    }
+
+    .listing-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    .listing h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .listing p {
+      font-size: 10px;
+      color: #777;
+      margin: 0;
+    }
+
+    .price {
+      color: #b87912;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 90px 22px;
+    }
+
+    .section-container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .section-title small {
+      color: #b87912;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      line-height: 1.1;
+      margin: 10px 0 15px;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      color: #6b7278;
+    }
+
+    /* PROBLEM */
+
+    .problem-section {
+      background: #111;
+      color: white;
+    }
+
+    .problem-section .section-title p {
+      color: #aaa;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .problem-card {
+      padding: 28px;
+      border: 1px solid #292929;
+      border-radius: 18px;
+      background: #181818;
+    }
+
+    .problem-icon {
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .problem-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .problem-card p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* USERS */
+
+    .users-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .user-card {
+      background: white;
+      border: 1px solid #e5e7e9;
+      padding: 25px 18px;
+      border-radius: 17px;
+      text-align: center;
+      transition: .2s;
+    }
+
+    .user-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,.07);
+    }
+
+    .user-card .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .user-card h3 {
+      font-size: 15px;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+
+    .step {
+      position: relative;
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid #e4e6e8;
+    }
+
+    .number {
+      width: 38px;
+      height: 38px;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: #70777d;
+      font-size: 14px;
+    }
+
+    /* DIFFERENCE */
+
+    .difference {
+      background: #f0f1f3;
+    }
+
+    .difference-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .difference-text h2 {
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .difference-text p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .check-list {
+      list-style: none;
+    }
+
+    .check-list li {
+      margin: 12px 0;
+      font-weight: 600;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      display: inline-flex;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #111;
+      color: white;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-size: 12px;
+    }
+
+    .network-card {
+      background: #111;
+      color: white;
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 25px 50px rgba(0,0,0,.15);
+    }
+
+    .network-card h3 {
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+
+    .network-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 14px 0;
+      padding: 13px;
+      background: #1c1c1c;
+      border-radius: 12px;
+    }
+
+    /* BUSINESS MODEL */
+
+    .money-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .money-card {
+      background: white;
+      border: 1px solid #e2e4e7;
+      padding: 30px;
+      border-radius: 18px;
+    }
+
+    .money-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .money-card p {
+      color: #6d747a;
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 90px 22px;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 46px;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .cta .primary-button {
+      display: inline-block;
+      background: white;
+      color: #111;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #080808;
+      color: white;
+      padding: 45px 22px;
+    }
+
+    .footer-container {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .footer-container p {
+      color: #777;
+      font-size: 13px;
+    }
+
+    .footer-right {
+      text-align: right;
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 55px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .phone {
+        width: 270px;
+        height: 540px;
+      }
+
+      .problem-grid,
+      .users-grid,
+      .steps,
+      .money-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .difference-box {
+        grid-template-columns: 1fr;
+      }
+
+      .difference-text {
+        text-align: center;
+      }
+
+      .check-list {
+        display: inline-block;
+        text-align: left;
+      }
+
+      .section-title h2,
+      .difference-text h2 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-container {
+        padding: 55px 18px;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 65px 18px;
+      }
+
+      .problem-grid,
+      .users-grid,
+      .steps,
+      .money-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone {
+        width: 255px;
+        height: 515px;
+      }
+
+      .cta h2 {
+        font-size: 35px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+    <div class="nav-container">
+
+      <a href="#" class="logo">
+        <div class="logo-icon">YP</div>
+        Yerli Piyasa
+      </a>
+
+      <div class="nav-links">
+        <a href="#nedir">Nedir?</a>
+        <a href="#nasil">Nasıl Çalışır?</a>
+        <a href="#kullanicilar">Kullanıcılar</a>
+        <a href="#model">İş Modeli</a>
+        <a href="#iletisim" class="nav-button">Bize Ulaşın</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="nedir">
+
+    <div class="hero-container">
+
+      <div>
+
+        <div class="badge">
+          🇹🇷 Türkiye'nin Yeni Nesil Ticaret Ağı
+        </div>
+
+        <h1>
+          Ticaretin<br>
+          <span>Yerli Piyasası.</span>
+        </h1>
+
+        <p>
+          Üreticiden besiciye, kasaptan restorana, mezbahadan otele kadar
+          sektörün tüm paydaşlarını tek bir dijital platformda buluşturuyoruz.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#nasil" class="primary-button">
+            Nasıl Çalışıyor?
+          </a>
+
+          <a href="#iletisim" class="secondary-button">
+            Projeyi İncele
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PHONE -->
+
+      <div class="phone-area">
+
+        <div class="phone">
+
+          <div class="phone-top">
+            <span>Yerli Piyasa</span>
+            <span>🔔</span>
+          </div>
+
+          <div class="phone-content">
+
+            <div class="search">
+              🔎 Ürün, ilan veya işletme ara...
+            </div>
+
+            <div class="category-row">
+
+              <div class="category">🥩<br>Et</div>
+              <div class="category">🐄<br>Hayvan</div>
+              <div class="category">🥛<br>Süt</div>
+              <div class="category">🌾<br>Yem</div>
+
+            </div>
+
+            <div class="listing">
+
+              <div class="listing-top">
+                <span>📍 Kayseri</span>
+                <span>Bugün</span>
+              </div>
+
+              <h3>Dana Kırkbayır</h3>
+
+              <p>
+                Mezbaha • 50 adet
+              </p>
+
+              <div class="price">
+                450 ₺ / adet
+              </div>
+
+            </div>
+
+
+            <div class="listing">
+
+              <div class="listing-top">
+                <span>📍 Kayseri</span>
+                <span>Yeni</span>
+              </div>
+
+              <h3>Besilik Büyükbaş</h3>
+
+              <p>
+                Üretici • 12 adet
+              </p>
+
+              <div class="price">
+                Fiyat için iletişime geç
+              </div>
+
+            </div>
+
+
+            <div class="listing">
+
+              <div class="listing-top">
+                <span>📍 Nevşehir</span>
+                <span>Aktif</span>
+              </div>
+
+              <h3>Bonfile</h3>
+
+              <p>
+                Et üreticisi • 250 kg
+              </p>
+
+              <div class="price">
+                Teklif al
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROBLEM -->
+
+  <section class="problem-section">
+
+    <div class="section-container">
+
+      <div class="section-title">
+
+        <small>Problem</small>
+
+        <h2>
+          Ticaret var.<br>
+          Ama bağlantı dağınık.
+        </h2>
+
+        <p>
+          Sektörde alıcı ve satıcıların birbirine ulaşması çoğu zaman
+          telefon, WhatsApp, tanıdıklar ve aracılar üzerinden gerçekleşiyor.
+        </p>
+
+      </div>
+
+
+      <div class="problem-grid">
+
+        <div class="problem-card">
+
+          <div class="problem-icon">📱</div>
+
+          <h3>Dağınık İletişim</h3>
+
+          <p>
+            Ürün ve ihtiyaçlar farklı kanallarda paylaşılıyor.
+          </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+          <div class="problem-icon">🔎</div>
+
+          <h3>Doğru Alıcıyı Bulmak</h3>
+
+          <p>
+            İşletmeler ihtiyaç duyduğu ürünü doğru tedarikçiden bulmakta zorlanıyor.
+          </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+          <div class="problem-icon">🚚</div>
+
+          <h3>Şehirler Arası Ticaret</h3>
+
+          <p>
+            Farklı şehirlerdeki üretici ve işletmeler arasında bağlantı kurmak zor.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- USERS -->
+
+  <section id="kullanicilar">
+
+    <div class="section-container">
+
+      <div class="section-title">
+
+        <small>Ekosistem</small>
+
+        <h2>
+          Kimler kullanacak?
+        </h2>
+
+        <p>
+          Yerli Piyasa yalnızca kasaplar için değil,
+          üretimden tüketime kadar tüm ticaret zinciri için tasarlanıyor.
+        </p>
+
+      </div>
+
+
+      <div class="users-grid">
+
+        <div class="user-card">
+          <div class="icon">🐄</div>
+          <h3>Besiciler</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🌾</div>
+          <h3>Çiftçiler</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🥩</div>
+          <h3>Kasaplar</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🍽️</div>
+          <h3>Restoranlar</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🏨</div>
+          <h3>Oteller</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🏭</div>
+          <h3>Mezbahalar</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🌿</div>
+          <h3>Yemciler</h3>
+        </div>
+
+        <div class="user-card">
+          <div class="icon">🚛</div>
+          <h3>Lojistik</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW -->
+
+  <section id="nasil" style="background:#f0f1f3;">
+
+    <div class="section-container">
+
+      <div class="section-title">
+
+        <small>Nasıl Çalışır?</small>
+
+        <h2>
+          İhtiyacını oluştur.<br>
+          Doğru ticareti bul.
+        </h2>
+
+        <p>
+          Yerli Piyasa'nın temel mantığı basit:
+          İhtiyacını veya ürününü sisteme gir, doğru işletmelerle bağlantı kur.
+        </p>
+
+      </div>
+
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="number">1</div>
+
+          <h3>İlan Oluştur</h3>
+
+          <p>
+            Satmak istediğin ürünü veya ihtiyacını platforma ekle.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="number">2</div>
+
+          <h3>Filtrele</h3>
+
+          <p>
+            Ürün, şehir, miktar ve fiyat gibi kriterlere göre arama yap.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="number">3</div>
+
+          <h3>Bağlantı Kur</h3>
+
+          <p>
+            Uygun alıcı veya satıcıyla iletişime geç.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="number">4</div>
+
+          <h3>Ticareti Tamamla</h3>
+
+          <p>
+            Anlaşmanı yap ve ticaretini gerçekleştir.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DIFFERENCE -->
+
+  <section class="difference">
+
+    <div class="section-container">
+
+      <div class="difference-box">
+
+        <div class="difference-text">
+
+          <small style="color:#b87912;font-weight:800;">
+            NEDEN YERLİ PİYASA?
+          </small>
+
+          <h2>
+            Sadece ilan değil,<br>
+            bir ticaret ağı.
+          </h2>
+
+          <p>
+            Amacımız insanların yalnızca ürün ilanı vermesi değil;
+            üretici, alıcı, satıcı ve hizmet sağlayıcıların
+            birbirleriyle bağlantı kurabildiği yaşayan bir ticaret ekosistemi oluşturmak.
+          </p>
+
+
+          <ul class="check-list">
+
+            <li>Şehir bazlı ticaret</li>
+
+            <li>Ürün ve ihtiyaç ilanları</li>
+
+            <li>Doğrudan işletme bağlantısı</li>
+
+            <li>Güvenilir kullanıcı profilleri</li>
+
+            <li>Gelecekte lojistik entegrasyonu</li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="network-card">
+
+          <h3>
+            Ticaret ağı
+          </h3>
+
+          <div class="network-line">
+            🐄 Üretici
+            →
+            🥩 Kasap
+          </div>
+
+          <div class="network-line">
+            🏭 Mezbaha
+            →
+            🍽️ Restoran
+          </div>
+
+          <div class="network-line">
+            🥩 Üretici
+            →
+            🏨 Otel
+          </div>
+
+          <div class="network-line">
+            🌾 Yemci
+            →
+            🐄 Besici
+          </div>
+
+          <div class="network-line">
+            🚛 Lojistik
+            →
+            📦 Ticaret
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUSINESS MODEL -->
+
+  <section id="model">
+
+    <div class="section-container">
+
+      <div class="section-title">
+
+        <small>İş Modeli</small>
+
+        <h2>
+          Platform nasıl gelir elde edecek?
+        </h2>
+
+        <p>
+          Kullanıcı sayısı ve ticaret hacmi büyüdükçe
+          farklı gelir kanallarının devreye alınması planlanıyor.
+        </p>
+
+      </div>
+
+
+      <div class="money-grid">
+
+        <div class="money-card">
+
+          <h3>📢 Reklam</h3>
+
+          <p>
+            Sektöre yönelik işletmeler ve markalar
+            platform üzerinde reklam verebilir.
+          </p>
+
+        </div>
+
+
+        <div class="money-card">
+
+          <h3>⭐ Premium Üyelik</h3>
+
+          <p>
+            İşletmelere daha görünür profil,
+            gelişmiş özellikler ve avantajlar sunulabilir.
+          </p>
+
+        </div>
+
+
+        <div class="money-card">
+
+          <h3>🚚 Lojistik</h3>
+
+          <p>
+            Gelecek aşamada gerçekleşen ticaretlerin
+            lojistik süreçleri platform üzerinden yönetilebilir.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta" id="iletisim">
+
+    <div class="section-container">
+
+      <h2>
+        Türkiye'nin ticaretini<br>
+        birlikte dijitalleştirelim.
+      </h2>
+
+      <p>
+        Yerli Piyasa henüz yolun başında.
+        Bu ekosistemin ilk kullanıcıları ve çözüm ortakları arasında yer alın.
+      </p>
+
+      <a href="mailto:info@yerlipiyasa.com" class="primary-button">
+        İletişime Geç
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div>
+
+        <div class="footer-logo">
+          YP · Yerli Piyasa
+        </div>
+
+        <p>
+          Üretimden ticarete, Türkiye'nin yeni nesil ticaret ağı.
+        </p>
+
+      </div>
+
+
+      <div class="footer-right">
+
+        <div>
+          © 2026 Yerli Piyasa
+        </div>
+
+        <div>
+          Kayseri · Türkiye
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
